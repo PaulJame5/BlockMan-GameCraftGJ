@@ -14,6 +14,8 @@ public class PlayerMove : MonoBehaviour
     public float rayLength = 5;
     public float offsetVertical = 0.32f;
     public bool grounded;
+
+
     [Space(10)]
     public float jumpPower;
 
@@ -103,7 +105,7 @@ public class PlayerMove : MonoBehaviour
 
     void CheckGrounded()
     {
-        
+        // Raycasts to floor to make sure is grounded
         grounded = Physics2D.Raycast(transform.position, Vector2.down, rayLength, terrain) ||
           Physics2D.Raycast(new Vector2(transform.position.x + offsetVertical, transform.position.y), Vector2.down, rayLength, terrain) ||
           Physics2D.Raycast(new Vector2(transform.position.x - offsetVertical, transform.position.y), Vector2.down, rayLength, terrain) ||
@@ -115,6 +117,7 @@ public class PlayerMove : MonoBehaviour
 
     void CheckSide()
     {
+        // Raycasts object out to side to make sure is npt touching wall
         if (Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, rayLength * .7f, terrain) ||
            Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + offsetVertical * 2), Vector2.right * transform.localScale.x, rayLength * .7f, terrain) ||
            Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - offsetVertical * 2), Vector2.right * transform.localScale.x, rayLength * .7f, terrain))

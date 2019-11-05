@@ -5,12 +5,14 @@ using UnityEngine;
 public class SelectBlock : MonoBehaviour 
 {
     public Vector2 size;
-    public Vector2 expandSize;
+    public Vector2 expandSize; // this is the size of an object while the mouse is hovered over it
     public float percentageIncrease = 0.1f;
     public Bag bag;
 
     public AudioClip pickUp;
     AudioSource aud;
+
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -20,12 +22,6 @@ public class SelectBlock : MonoBehaviour
         expandSize = size + (size * percentageIncrease);
     }
 	
-	// Update is called once per frame
-	void Update () 
-    {
-		
-	}
-
 
     private void OnMouseOver()
     {
